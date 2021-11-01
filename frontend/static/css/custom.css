@@ -1,3 +1,7 @@
+body{
+	background: url(../images/bg.png);
+}
+
 /* padded tb : top-bottom */
 
 .c-padded-mini {
@@ -74,7 +78,9 @@
 .c-opacity-mini{
 	opacity: 0.8 !important;
 }
-
+.c-opacity-tiny {
+	opacity: 0.6 !important;
+}
 
 /* display */
 .c-inline-block{
@@ -86,8 +92,31 @@
 	max-width: 72em !important;
 	margin: auto !important;
 }
+.c-container-small {
+	max-width: 60em !important;
+	margin: auto !important;
+}
 
 /* color */
 .c-black {
 	color: #333 !important;
+}
+
+/* position */
+.c-right-top{
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+.c-mobile-show{
+	display: none !important;
+}
+@media screen and (max-width: 768px) {
+	.c-mobile-hidden{
+		display: none !important;
+	}
+	.c-mobile-show{
+		display: block !important;
+	}
 }
