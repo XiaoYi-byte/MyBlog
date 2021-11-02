@@ -6,6 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>博客发布</title>
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+		<link rel="stylesheet" href="../static/lib/editormd/css/editormd.min.css">
 		<link rel="stylesheet" href="../static/css/custom.css">
 	</head>
 
@@ -70,7 +71,9 @@
 
 					<!-- blog content -->
 					<div class="field">
-						<textarea name="content" placeholder="博客内容"></textarea>
+						<div id="content-editormd" style="z-index: 1 !important;">
+							<textarea name="content" placeholder="博客内容" style="display: none !important;"></textarea>
+						</div>
 					</div>
 
 					<!-- tags and types -->
@@ -197,7 +200,18 @@
 		</footer>
 		<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+		<script src="../static/lib/editormd/editormd.min.js"></script>
 		<script>
+			var contentEditor;
+			$(function () {
+				contentEditor = editormd("content-editormd", {
+					width: "90%",
+					height: 640,
+					syncScrolling: "single",
+					path: "../static/lib/editormd/lib/"
+				});
+			});
+
 			$('.menu.toggle').click(function () {
 				$('.c-item').toggleClass('c-mobile-hidden');
 			});
