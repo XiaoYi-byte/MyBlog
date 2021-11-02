@@ -106,6 +106,10 @@ body{
 	margin: auto !important;
 }
 
+/* shadow */
+.c-shadow-small{
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+}
 /* color */
 .c-black {
 	color: #333 !important;
