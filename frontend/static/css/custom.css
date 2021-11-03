@@ -11,6 +11,9 @@ body{
 .c-padded-tiny{
 	padding: 0.3em !important;
 }
+.c-padded {
+	padding: 1em !important;
+}
 .c-padded-tb-mini{
 	padding-top: 0.2em !important;
 	padding-bottom: 0.2em !important;
@@ -121,6 +124,14 @@ body{
 	position: absolute;
 	top: 0;
 	right: 0;
+}
+.c-fixed {
+	position: fixed !important;
+	z-index: 10 !important;
+}
+.c-right-bottom {
+	bottom: 0 !important;
+	right: 0 !important;
 }
 
 .c-mobile-show{
