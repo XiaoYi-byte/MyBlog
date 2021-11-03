@@ -4,9 +4,12 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>首页</title>
+		<title>博客详情</title>
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 		<link rel="stylesheet" href="./static/css/custom.css">
+		<link rel="stylesheet" href="./static/lib/prism/prism.css">
+		<link rel="stylesheet" href="./static/css/typo.css">
 	</head>
 
 	<body>
@@ -35,7 +38,7 @@
 		</nav>
 
 		<!-- content -->
-		<div class="c-container-small c-padded-tb-big">
+		<div class="c-container-small c-padded-tb-big animate__animated animate__fadeIn">
 			<div class="ui container">
 				<div class="ui segment attached top">
 					<div class="ui horizontal link list">
@@ -62,42 +65,178 @@
 					<div class="ui right aligned basic segment">
 						<div class="ui orange basic label">原创</div>
 					</div>
-
-					<!-- header -->
-					<h2 class="ui center aligned header">愿你眼底有光，心中有爱，灵魂有家</h2>
-
-					<br>
 					<!-- content -->
-					<div class="c-padded-lr-responsive c-padded-tb-large">
-						<p>一朝一暮的光阴，如涓涓流水，去而不返。一聚一散的无常，如花开花谢，来去有时。</p>
-						<p>过往之事不可追，未来之事不可猜。</p>
-						<p>余生，便做一个豁达之人，让眼底有光，无惧黑暗。让心中有爱，不失温度。让灵魂有家，随处可栖。</p>
-						<p>有人说：&ldquo;眼睛，是心灵的窗户。&rdquo;</p>
-						<p>若一个人的眼底清澈有光，山河岁月皆是温暖可亲。若一个人的眼底黯淡无光，十里桃源亦是荒芜寂寥。</p>
-						<p>即便是尝过世事沧桑，只要眼底有光，就会燃起希望之火，美好就会生生不息、永不陨灭。</p>
-						<p>一名七岁的小女孩，父母在菜市场卖卤菜。因为不放心她一个人在家，所以将她带在身边，在案板下给她安排了学习的地方。小女孩在如此嘈杂的环境中，满脸笑容地专心学习。</p>
-						<p>环境的粗陋，<a href="//www.bidushe.com/jingdian/suibi/">生活</a>的艰辛，并没有令她意志消沉，反而乐观向上。</p>
-						<p>这是因为，她敢于直面<a
-								href="//www.bidushe.com/jingdian/ganwu/">人生</a>，勇于接纳平凡，始终心存希望。即便窗外斜风细雨，在她的眼底，依旧繁花似锦，星辰满天。
+					<div class="typo typo-selection c-padded-lr-responsive c-padded-tb-large">
+						<h1>中文网页重设与排版：<i class="serif">Typo.css</i></h1><br />
+						<pre>
+							<code class="language-java">
+public class Shape {
+public static void main(String[] args) {
+System.out.println("hello,world");
+}
+}
+						</code>
+						</pre>
+
+						<h2 id="tagline" class="serif">一致化浏览器排版效果，构建最适合中文阅读的网页排版</h2>
+
+						<ol id="table">
+							<li><a href="#section1">关于 <i class="serif">Typo.css</i></a></li>
+							<li><a href="#section2">排版实例</a>
+								<ul>
+									<li><a href="#section2-1">例1：论语学而篇第一</a></li>
+									<li><a href="#section2-2">例2：英文排版</a></li>
+								</ul>
+							</li>
+							<li><a href="#section3">附录</a>
+								<ul>
+									<li><a href="#appendix1"><i class="serif">Typo.css</i> 排版偏重点</a></li>
+									<li><a href="#appendix2">开源许可</a></li>
+								</ul>
+							</li>
+						</ol>
+
+						<h2 id="section1">一、关于 <i class="serif">Typo.css</i></h2>
+
+						<p><i class="serif">Typo.css</i> 的目的是，在一致化浏览器排版效果的同时，构建最适合中文阅读的网页排版。</p>
+						<h4>现状和如何去做：</h4>
+
+						<p class="typo-first">排版是一个麻烦的问题 <sup><a href="#appendix1">#
+									附录一</a></sup>，需要精心设计，而这个设计却是常被视觉设计师所忽略的。前端工程师更常看到这样的问题，但不便变更。因为在多个 OS
+							中的不同浏览器渲染不同，改动需要多的时间做回归测试，所以改变变得更困难。而像我们一般使用的
+							Yahoo、Eric Meyer 和 Alice base.css 中采用的 Reset 都没有很好地考虑中文排版。<i class="serif">Typo.css</i>
+							要做的就是解决中文排版的问题。
 						</p>
-						<p>眼底有光的人，都是心存希望的。</p>
-						<p>即便生活过得不如意，也不会轻易丢弃内心的光芒。他们勇敢、坚强，对未知的生活满怀憧憬。</p>
-						<p>纵使身陷泥沼，也依旧仰望星辰。</p>
-						<p>有人说：&ldquo;心中有爱，人间就是天堂。&rdquo;</p>
-						<p>爱是什么？</p>
-						<p>爱，是对万物生灵的悲悯。世间草木生灵，无不有情。</p>
-						<p>爱，是不计回报的奉献。世人渺小，却有大爱。</p>
-						<p>一名公交车司机，开车途中病发之际，面对车流的熙攘，和道路的湿滑，在意识丧失之前，倾尽全力地将车安稳地停在了路边，得以保全车里50多名乘客的生命。</p>
-						<p>他给予生命与爱，制止了一场即将发生的惨剧。</p>
-						<p>爱，是绵延不息的感动。爱是传承，随处可见。</p>
-						<p>爱是清晨六点钟，餐桌上爱人准备的早餐。爱是出行途中，公车上陌生人让出的座位。爱是当东西掉落，你却双手无暇时，后面有人随手捡起的善意。</p>
-						<p>世人赠予善意与爱，我们唯有还以微笑，报以感恩。</p>
-						<p>心中有大爱，可以容山海。心中有小爱，亦有花香来。</p>
-						<p>心中有爱的人，无畏前路，不怕失去。对生活感恩，对他人感激，对万物有情，活得温暖有力量。</p>
-						<p>如果说，房子只是用来容纳居住的地方，那么真正的家，则应该是用来安顿灵魂的栖处。</p>
-						<p>或是在书海中徜徉知识，或是在旅途中遍尝风情，抑或是在草木间感受生机。当一个人的灵魂饱满了，有处可栖，心境也会随之变得通透清明，不再患得患失，亦不再漂泊无依。</p>
-						<p>真情，可令时光温柔。热爱，可抵岁月漫长。如此，四海皆是家，心安即归处。</p>
-						<p>最好的余生，便是：眼底有光，心中有爱，灵魂有家。</p>
+
+						<p><strong><i class="serif">Typo.css</i> 测试于如下平台：</strong></p>
+						<table class="ui table" summary="Typo.css 的测试平台列表">
+							<thead>
+								<tr>
+									<th>OS/浏览器</th>
+									<th>Firefox</th>
+									<th>Chrome</th>
+									<th>Safari</th>
+									<th>Opera</th>
+									<th>IE9</th>
+									<th>IE8</th>
+									<th>IE7</th>
+									<th>IE6</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>OS X</td>
+									<td>✔</td>
+									<td>✔</td>
+									<td>✔</td>
+									<td>✔</td>
+									<td>-</td>
+									<td>-</td>
+									<td>-</td>
+									<td>-</td>
+								</tr>
+								<tr>
+									<td>Win 7</td>
+									<td>✔</td>
+									<td>✔</td>
+									<td>✔</td>
+									<td>✔</td>
+									<td>✔</td>
+									<td>✔</td>
+									<td>✔</td>
+									<td>-</td>
+								</tr>
+								<tr>
+									<td>Win XP</td>
+									<td>✔</td>
+									<td>✔</td>
+									<td>✔</td>
+									<td>✔</td>
+									<td>-</td>
+									<td>✔</td>
+									<td>✔</td>
+									<td>✔</td>
+								</tr>
+								<tr>
+									<td>Ubuntu</td>
+									<td>✔</td>
+									<td>✔</td>
+									<td>-</td>
+									<td>✔</td>
+									<td>-</td>
+									<td>-</td>
+									<td>-</td>
+									<td>-</td>
+								</tr>
+							</tbody>
+						</table>
+
+						<h4>中文排版的重点和难点</h4>
+
+						<p>在中文排版中，HTML4 的很多标准在语义在都有照顾到。但从视觉效果上，却很难利用单独的 CSS 来实现，像<abbr
+								title="在文字下多加一个点">着重号</abbr>（例：这里<em class="typo-em">强调一下</em>）。在 HTML4
+							中，专名号标签（<code>&lt;u&gt;</code>）已经被放弃，而
+							HTML5 被<a href="//html5doctor.com/u-element/">重新提起</a>。<i class="serif">Typo.css</i>
+							也根据实际情况提供相应的方案。我们重要要注意的两点是：</p>
+						<ol>
+							<li>语义：语义对应的用法和样式是否与中文排版一致</li>
+							<li>表现：在各浏览器中的字体、大小和缩放是否如排版预期</li>
+						</ol>
+						<p>对于这些，<i class="serif">Typo.css</i> 排版项目的中文偏重注意点，都添加在附录中，详见：</p>
+						<blockquote>
+							<b>附录一</b>：<a href="#appendix1"><i class="serif">Typo.css</i> 排版偏重点</a>
+						</blockquote>
+
+						<p>目前已有像百姓网等全面使用 <i class="serif">Typo.css</i> 的项目，测试平台的覆盖，特别是在<abbr
+								title="手机、平板电脑等移动平台">移动端</abbr>上还没有覆盖完主流平台，希望有能力的同学能加入测试行列，或者加入到 <i
+								class="serif">Typo.css</i>
+							的开发。加入方法：<a href="https://github.com/sofish/Typo.css">参与 <i class="serif">Typo.css</i>
+								开发</a>。如有批评、建议和意见，也随时欢迎给在 Github 直接提 <a
+								href="https://github.com/sofish/Typo.css/issues">issues</a>，或给<abbr
+								title="Sofish Lin, author of Typo.css" role="author">我</abbr>发<a
+								href="mailto:sofish@icloud.com">邮件</a>。</p>
+
+
+						<h2 id="section2">二、排版实例：</h2>
+
+						<p>提供2个排版实例，第一个中文实例来自于来自于<cite
+								class="typo-unique">张燕婴</cite>的《论语》，由于古文排版涉及到的元素比较多，所以采用《论语》中《学而》的第一篇作为排版实例介绍；第2个来自到经典的
+							Lorem Ipsum，并加入了一些代码和列表等比较具有代表性的排版元素。</p>
+
+						<h3 id="section2-1">例1：论语学而篇第一</h3>
+
+						<p>
+							<small><b>作者：</b><abbr title="名丘，字仲尼">孔子</abbr>（
+								<time>前551年9月28日－前479年4月11日</time>
+								）
+							</small>
+						</p>
+
+						<h4>本篇引语</h4>
+
+						<p>
+							《学而》是《论语》第一篇的篇名。《论语》中各篇一般都是以第一章的前二三个字作为该篇的篇名。《学而》一篇包括16章，内容涉及诸多方面。其中重点是「吾日三省吾身」；「节用而爱人，使民以时」；「礼之用，和为贵」以及仁、孝、信等道德范畴。
+						</p>
+
+						<h4>原文</h4>
+
+						<p>子曰：「学而时习之，不亦说乎？有朋自远方来，不亦乐乎？人不知，而不愠，不亦君子乎？」 </p>
+
+						<h4>译文</h4>
+
+						<p>孔子说：「学了又时常温习和练习，不是很愉快吗？有志同道合的人从远方来，不是很令人高兴的吗？人家不了解我，我也不怨恨、恼怒，不也是一个有德的君子吗？」 </p>
+
+						<h4>评析</h4>
+
+						<p>宋代著名学者<u
+								class="typo-u">朱熹</u>对此章评价极高，说它是「入道之门，积德之基」。本章这三句话是人们非常熟悉的。历来的解释都是：学了以后，又时常温习和练习，不也高兴吗等等。三句话，一句一个意思，前后句子也没有什么连贯性。但也有人认为这样解释不符合原义，指出这里的「学」不是指学习，而是指学说或主张；「时」不能解为时常，而是时代或社会的意思，「习」不是温习，而是使用，引申为采用。而且，这三句话不是孤立的，而是前后相互连贯的。这三句的意思是：自己的学说，要是被社会采用了，那就太高兴了；退一步说，要是没有被社会所采用，可是很多朋友赞同<abbr
+								title="张燕婴">我</abbr>的学说，纷纷到我这里来讨论问题，我也感到快乐；再退一步说，即使社会不采用，人们也不理解我，我也不怨恨，这样做，不也就是君子吗？（见《齐鲁学刊》1986年第6期文）这种解释可以自圆其说，而且也有一定的道理，供读者在理解本章内容时参考。
+						</p>
+
+						<p>此外，在对「人不知，而不愠」一句的解释中，也有人认为，「人不知」的后面没有宾语，人家不知道什么呢？当时因为孔子有说话的特定环境，他不需要说出知道什么，别人就可以理解了，却给后人留下一个谜。有人说，这一句是接上一句说的，从远方来的朋友向我求教，我告诉他，他还不懂，我却不怨恨。这样，「人不知」就是「人家不知道我所讲述的」了。这样的解释似乎有些牵强。
+						</p>
+
+						<p>总之，本章提出以学习为乐事，做到人不知而不愠，反映出孔子学而不厌、诲人不倦、注重修养、严格要求自己的主张。这些思想主张在《论语》书中多处可见，有助于对第一章内容的深入了解。</p>
 					</div>
 
 					<!-- label -->
@@ -134,7 +273,7 @@
 							<ui class="list">
 								<li>作者：XiaoYi-byte</li>
 								<li>发布时间：2021-11-01 08:14</li>
-								<li>版权声明:自由转载-非商用-非衍生-保持署名（创意共享3.0许可证）</li>
+								<li>版权声明：自由转载-非商用-非衍生-保持署名（创意共享3.0许可证）</li>
 								<li>欢迎添加作者微信交朋友</li>
 							</ui>
 						</div>
@@ -289,6 +428,7 @@
 					rights reserved</p>
 			</div>
 		</footer>
+		<script src="./static/lib/prism/prism.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
 		<script>
