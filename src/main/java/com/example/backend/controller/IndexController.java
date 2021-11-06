@@ -1,12 +1,7 @@
 package com.example.backend.controller;
 
-import com.example.backend.exception.NotFoundException;
-import com.example.backend.model.Book;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Map;
 
 @Controller
 public class IndexController {
