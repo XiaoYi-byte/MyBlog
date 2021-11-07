@@ -48,7 +48,7 @@ public class TypesController {
     }
 
     @PostMapping("/types")
-    public String saveTypes(@Valid Type type, RedirectAttributes attributes, BindingResult result) {
+    public String saveTypes(@Valid Type type, BindingResult result, RedirectAttributes attributes) {
         Type typeByName = typesService.getTypeByName(type.getName());
         if (typeByName != null) {
             result.rejectValue("name", "nameError", "不能添加重复的分类");

@@ -4,7 +4,7 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
-!**/log/**
+
 ### STS ###
 .apt_generated
 .classpath
@@ -35,3 +35,5 @@ build/
 
 ### clear github security alert ###
 package.json
+
+*.log

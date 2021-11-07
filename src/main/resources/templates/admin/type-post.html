@@ -16,7 +16,7 @@
     <div class="ui container">
         <div class="ui inverted secondary stackable menu">
             <h2 class="ui teal header item">管理后台</h2>
-            <a href="#" class="active c-item item c-mobile-hidden"><i class="mini home icon"></i>博客</a>
+            <a href="#" class="c-item item c-mobile-hidden"><i class="mini home icon"></i>博客</a>
             <a href="#" class="c-item item c-mobile-hidden"><i class="mini idea icon"></i>分类</a>
             <a href="#" class="c-item item c-mobile-hidden"><i class="mini tags icon"></i>标签</a>
             <div class="right menu c-item c-mobile-hidden">
@@ -51,7 +51,6 @@
 <div class="c-container c-padded-tb-big">
     <div class="ui container">
         <form action="#" method="post" class="ui form" th:object="${type}" th:action="*{id} == null ? @{/admin/types} : @{/admin/types/{id}(id=*{id})}">
-            <input type="hidden" name="id" th:value="*{id}">
             <!-- photo reference -->
             <div class="required field">
                 <div class="ui left labeled input">
