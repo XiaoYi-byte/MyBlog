@@ -31,6 +31,11 @@ public class TypesServiceImpl implements TypesService {
         return typesRepository.findById(id).orElse(null);
     }
 
+    @Override
+    public Type getTypeByName(String name) {
+        return typesRepository.findTypeByName(name);
+    }
+
     @Transactional
     @Override
     public Page<Type> listType(Pageable pageable) {

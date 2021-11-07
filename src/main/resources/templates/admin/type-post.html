@@ -41,8 +41,8 @@
 <div class="ui attached pointing menu">
     <div class="ui container">
         <div class="right menu">
-            <a href="#" class="teal active item">发布</a>
-            <a href="#" class="item">列表</a>
+            <a th:href="@{/admin/types/addType}" class="active teal item">新增</a>
+            <a th:href="@{/admin/types}" class="item">列表</a>
         </div>
     </div>
 </div>
@@ -50,22 +50,28 @@
 <!-- content -->
 <div class="c-container c-padded-tb-big">
     <div class="ui container">
-        <form action="#" method="post" class="ui form" th:action="@{/admin/types}">
-
+        <form action="#" method="post" class="ui form" th:object="${type}" th:action="*{id} == null ? @{/admin/types} : @{/admin/types/{id}(id=*{id})}">
+            <input type="hidden" name="id" th:value="*{id}">
             <!-- photo reference -->
-            <div class="field">
+            <div class="required field">
                 <div class="ui left labeled input">
                     <label class="ui teal basic label">名称</label>
-                    <input type="text" name="name" placeholder="分类名称">
+                    <input type="text" name="name" placeholder="分类名称" th:value="*{name}">
                 </div>
             </div>
 
             <!-- error message -->
             <div class="ui error message"></div>
-
+            <!--/*/
+            <div class="ui negative message" th:if="${#fields.hasErrors('name')}">
+                <i class="close icon"></i>
+                <div class="header">验证失败</div>
+                <p th:errors="*{name}">提交信息不符合规范</p>
+            </div>
+            /*/-->
             <!-- three button -->
             <div class="ui right aligned container">
-                <button type="button" class="ui button" onclick="window.history.go(-1)">返回</button>
+                <a th:href="@{/admin/types}"><button type="button" class="ui button">返回</button></a>
                 <button class="ui teal submit button">提交</button>
             </div>
         </form>
@@ -135,19 +141,12 @@
     $('.ui.form').form({
         fields: {
             title: {
-                identifier: 'title',
+                identifier: 'name',
                 rules: [{
                     type: 'empty',
-                    prompt: '标题：请输入博客标题'
+                    prompt: '名称：请输入分类名称'
                 }]
             },
-            content: {
-                identifier: 'content',
-                rules: [{
-                    type: 'empty',
-                    prompt: '内容：请输入博客内容'
-                }]
-            }
         }
     })
 </script>
