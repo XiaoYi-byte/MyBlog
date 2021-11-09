@@ -3,6 +3,7 @@ package com.example.backend.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -14,7 +15,9 @@ public class Blog {
     @Id
     @GeneratedValue
     private Long id;
+    @NotBlank(message = "标题不能为空")
     private String title;
+    @NotBlank(message = "内容不能为空")
     private String content;
     private String firstPicture;
     private String flag;

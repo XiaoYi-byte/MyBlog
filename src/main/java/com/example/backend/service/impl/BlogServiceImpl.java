@@ -40,22 +40,20 @@ public class BlogServiceImpl implements BlogService {
 
     @Override
     public Page<Blog> listBlog(Pageable pageable, Blog blog) {
-        return blogRepository.findAll(new Specification<Blog>() {
-            @Override
-            public Predicate toPredicate(Root<Blog> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
-                List<Predicate> predicates = new ArrayList<>();
-                if (blog.getTitle() != null && "".equals(blog.getTitle())) {
-                    predicates.add(criteriaBuilder.like(root.<String>get("title"), blog.getTitle()));
-                }
-                if (blog.getType() != null && blog.getType().getId() != null) {
-                    predicates.add(criteriaBuilder.equal(root.<Type>get("type").get("id"), blog.getType().getId()));
-                }
-                if (blog.isRecommended()) {
-                    predicates.add(criteriaBuilder.equal(root.<Boolean>get("recommend"), blog.isRecommended()));
-                }
-                query.where(predicates.toArray(new Predicate[0]));
-                return null;
+        return blogRepository.findAll((Specification<Blog>) (root, query, criteriaBuilder) -> {
+            List<Predicate> predicates = new ArrayList<>();
+            if (blog.getTitle() != null && "".equals(blog.getTitle())) {
+                predicates.add(criteriaBuilder.like(root.get("title"), blog.getTitle()));
             }
+            if (blog.getType() != null && blog.getType().getId() != null) {
+                predicates.add(criteriaBuilder.equal(root.<Type>get("type").get("id"), blog.getType().getId()));
+            }
+            if (blog.isRecommended()) {
+                predicates.add(criteriaBuilder.equal(root.<Boolean>get("recommend"), blog.isRecommended()));
+            }
+
+            query.where(predicates.toArray(new Predicate[0]));
+            return null;
         }, pageable);
     }
 

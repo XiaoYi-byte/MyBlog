@@ -52,7 +52,7 @@
     <div class="ui container">
         <form action="#" method="post" class="ui form" th:object="${tag}" th:action="*{id} == null ? @{/admin/tags} : @{/admin/tags/{id}(id=*{id})}">
             <!-- photo reference -->
-            <div class="required field">
+            <div class=" field">
                 <div class="ui left labeled input">
                     <label class="ui teal basic label">名称</label>
                     <input type="text" name="name" placeholder="分类名称" th:value="*{name}">
@@ -61,13 +61,11 @@
 
             <!-- error message -->
             <div class="ui error message"></div>
-            <!--/*/
             <div class="ui negative message" th:if="${#fields.hasErrors('name')}">
                 <i class="close icon"></i>
                 <div class="header">验证失败</div>
                 <p th:errors="*{name}">提交信息不符合规范</p>
             </div>
-            /*/-->
             <!-- three button -->
             <div class="ui right aligned container">
                 <a th:href="@{/admin/tags}"><button type="button" class="ui button">返回</button></a>
@@ -127,6 +125,7 @@
 <th:block th:fragment="script">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <script src="../../static/lib/editormd/editormd.min.js" th:src="@{/static/lib/editormd/editormd.min.js}"></script>
 </th:block>
 <script>
 
@@ -137,17 +136,17 @@
         on: 'hover'
     });
 
-    $('.ui.form').form({
-        fields: {
-            title: {
-                identifier: 'name',
-                rules: [{
-                    type: 'empty',
-                    prompt: '名称：请输入标签名称'
-                }]
-            },
-        }
-    })
+    // $('.ui.form').form({
+    //     fields: {
+    //         title: {
+    //             identifier: 'name',
+    //             rules: [{
+    //                 type: 'empty',
+    //                 prompt: '名称：请输入标签名称'
+    //             }]
+    //         },
+    //     }
+    // })
 </script>
 </body>
 

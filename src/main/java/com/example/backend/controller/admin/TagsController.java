@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.validation.Valid;
+
 @Controller
 @RequestMapping("/admin")
 public class TagsController {
@@ -26,25 +28,25 @@ public class TagsController {
     }
 
     @GetMapping("/tags")
-    public String tags(@PageableDefault(size = 10, sort = {"id"}, direction = Sort.Direction.DESC) Pageable pageable, Model model){
+    public String tags(@PageableDefault(size = 10, sort = {"id"}, direction = Sort.Direction.DESC) Pageable pageable, Model model) {
         Page<Tag> tags = tagsService.listTag(pageable);
-        model.addAttribute("page",tags);
+        model.addAttribute("page", tags);
         return "admin/tags";
     }
 
     @GetMapping("/tags/addTag")
-    public String addTag(Model model){
-        model.addAttribute("tag",new Tag());
+    public String addTag(Model model) {
+        model.addAttribute("tag", new Tag());
         return "admin/tag-post";
     }
 
     @PostMapping("/tags")
-    public String saveTag(Tag tag, BindingResult result, RedirectAttributes attributes){
+    public String saveTag(@Valid Tag tag, BindingResult result, RedirectAttributes attributes) {
         Tag tagByName = tagsService.getTagByName(tag.getName());
-        if(tagByName != null){
-            result.rejectValue("name","nameError","不能添加重复的标签");
+        if (tagByName != null) {
+            result.rejectValue("name", "nameError", "不能添加重复的标签");
         }
-        if(result.hasErrors()){
+        if (result.hasErrors()) {
             return "admin/tag-post";
         }
         Tag t = tagsService.saveTag(tag);
@@ -57,26 +59,26 @@ public class TagsController {
     }
 
     @GetMapping("/tags/{id}/edit")
-    public String editTag(@PathVariable Long id, Model model){
+    public String editTag(@PathVariable Long id, Model model) {
         Tag tag = tagsService.getTag(id);
-        model.addAttribute("tag",tag);
+        model.addAttribute("tag", tag);
         return "admin/tag-post";
     }
 
     @GetMapping("/tags/{id}/delete")
-    public String deleteTag(@PathVariable Long id,RedirectAttributes attributes){
+    public String deleteTag(@PathVariable Long id, RedirectAttributes attributes) {
         tagsService.deleteTag(id);
-        attributes.addFlashAttribute("message","删除成功");
+        attributes.addFlashAttribute("message", "删除成功");
         return "redirect:/admin/tags";
     }
 
     @PostMapping("/tags/{id}")
-    public String submitEditingTag(Tag tag, BindingResult result, RedirectAttributes attributes){
+    public String submitEditingTag(@Valid Tag tag, BindingResult result, RedirectAttributes attributes) {
         Tag tagByName = tagsService.getTagByName(tag.getName());
-        if(tagByName != null){
-            result.rejectValue("name","nameError","不能添加重复的标签");
+        if (tagByName != null) {
+            result.rejectValue("name", "nameError", "不能添加重复的标签");
         }
-        if(result.hasErrors()){
+        if (result.hasErrors()) {
             return "admin/tag-post";
         }
         Tag t = tagsService.saveTag(tag);
