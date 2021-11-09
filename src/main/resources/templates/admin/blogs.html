@@ -50,126 +50,80 @@
     <div class="ui container">
 
         <!-- header -->
-        <form action="#" method="post" class="ui segment form">
+        <div class="ui secondary segment form">
+            <input type="hidden" name="page">
             <div class="inline fields">
                 <div class="field">
                     <input type="text" name="title" placeholder="标题">
                 </div>
                 <div class="field">
                     <div class="ui selection dropdown">
-                        <input type="hidden" name="type">
+                        <input type="hidden" name="typeId">
                         <i class="dropdown icon"></i>
                         <div class="default text">分类</div>
                         <div class="menu">
-                            <div class="item" data-value="1">错误日志</div>
-                            <div class="item" data-value="2">开发者手册</div>
+                            <div th:each="type : ${types}" class="item" th:data-value="${type.id}"
+                                 th:text="${type.name}">错误日志
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="field">
                     <div class="ui checkbox">
-                        <input type="checkbox" name="recommand" id="recommand">
-                        <label for="recommand">推荐</label>
+                        <input type="checkbox" name="recommend" id="recommend">
+                        <label for="recommend">推荐</label>
                     </div>
                 </div>
                 <div class="field">
-                    <button class="mini ui teal basic button"><i class="search icon"></i>搜索</button>
+                    <button type="button" id="search-btn" class="mini ui teal basic button"><i class="search icon"></i>搜索
+                    </button>
                 </div>
             </div>
-        </form>
+        </div>
 
-        <!-- table -->
-        <table class="ui table">
-            <thead>
-            <tr>
-                <th></th>
-                <th>标题</th>
-                <th>类型</th>
-                <th>推荐</th>
-                <th>更新时间</th>
-                <th>操作</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>1</td>
-                <td>SpringBoot</td>
-                <td>框架</td>
-                <td>是</td>
-                <td>2021-11-02 20:06</td>
-                <td>
-                    <a href="#" class="ui mini teal button">编辑</a>
-                    <a href="#" class="ui mini red button">删除</a>
-                </td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>SpringBoot</td>
-                <td>框架</td>
-                <td>是</td>
-                <td>2021-11-02 20:06</td>
-                <td>
-                    <a href="#" class="ui mini teal button">编辑</a>
-                    <a href="#" class="ui mini red button">删除</a>
-                </td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>SpringBoot</td>
-                <td>框架</td>
-                <td>是</td>
-                <td>2021-11-02 20:06</td>
-                <td>
-                    <a href="#" class="ui mini teal button">编辑</a>
-                    <a href="#" class="ui mini red button">删除</a>
-                </td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>SpringBoot</td>
-                <td>框架</td>
-                <td>是</td>
-                <td>2021-11-02 20:06</td>
-                <td>
-                    <a href="#" class="ui mini teal button">编辑</a>
-                    <a href="#" class="ui mini red button">删除</a>
-                </td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td>SpringBoot</td>
-                <td>框架</td>
-                <td>是</td>
-                <td>2021-11-02 20:06</td>
-                <td>
-                    <a href="#" class="ui mini teal button">编辑</a>
-                    <a href="#" class="ui mini red button">删除</a>
-                </td>
-            </tr>
-            <tr>
-                <td>6</td>
-                <td>SpringBoot</td>
-                <td>框架</td>
-                <td>是</td>
-                <td>2021-11-02 20:06</td>
-                <td>
-                    <a href="#" class="ui mini teal button">编辑</a>
-                    <a href="#" class="ui mini red button">删除</a>
-                </td>
-            </tr>
-            </tbody>
-            <tfoot>
-            <tr>
-                <th colspan="6">
-                    <div class="ui mini pagination menu right floated">
-                        <a href="#" class="item">上一页</a>
-                        <a href="#" class="item">下一页</a>
-                    </div>
-                    <a href="#" class="ui mini teal basic button">新增</a>
-                </th>
-            </tr>
-            </tfoot>
-        </table>
+        <div id="table-container">
+            <!-- table -->
+            <table th:fragment="blogList" class="ui compact teal table">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th>标题</th>
+                    <th>类型</th>
+                    <th>推荐</th>
+                    <th>更新时间</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="blog, iterStat : ${page.content}">
+                    <td th:text="${iterStat.count}">1</td>
+                    <td th:text="${blog.title}">SpringBoot</td>
+                    <td th:text="${blog.type.name}">框架</td>
+                    <td th:text="${blog.isRecommended} ? '是' : '否'">是</td>
+                    <td th:text="${blog.updateTime}">2021-11-02 20:06</td>
+                    <td>
+                        <a href="#" th:href="@{/admin/blogs/{id}/edit(id=${blog.id})}"
+                           class="ui mini teal button">编辑</a>
+                        <a href="#" th:href="@{/admin/blogs/{id}/delete(id=${blog.id})}"
+                           class="ui mini red button">删除</a>
+                    </td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <th colspan="6">
+                        <div class="ui mini pagination menu right floated" th:if="${page.totalPages} > 1">
+                            <a onclick="page(this)" th:attr="data-page=${page.number} - 1" class="item"
+                               th:unless="${page.first}">上一页</a>
+                            <a onclick="page(this)" th:attr="data-page=${page.number} + 1" class="item"
+                               th:unless="${page.last}">下一页</a>
+                        </div>
+                        <a th:href="@{/admin/blogs/addBlog}" class="ui mini teal basic button">新增</a>
+                    </th>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
     </div>
 </div>
 
@@ -222,9 +176,28 @@
     $('.menu.toggle').click(function () {
         $('.c-item').toggleClass('c-mobile-hidden');
     });
+
     $('.ui.dropdown').dropdown({
         on: 'hover'
     });
+
+    function page(obj) {
+        $("[name='page']").val($(obj).data('page'))
+        loadData()
+    }
+
+    $('#search-btn').click(function () {
+        loadData()
+    })
+
+    function loadData() {
+        $("#table-container").load("/admin/blogs/search", {
+            title: $("[name='title']").val(),
+            typeId: $("[name='typeId ']").val(),
+            recommend: $("[name='recommend']").prop('checked'),
+            page: $("[name='page']").val()
+        })
+    }
 </script>
 </body>
 

@@ -11,6 +11,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 public class TypesServiceImpl implements TypesService {
     private final TypesRepository typesRepository;
@@ -40,6 +42,12 @@ public class TypesServiceImpl implements TypesService {
     @Override
     public Page<Type> listType(Pageable pageable) {
         return typesRepository.findAll(pageable);
+    }
+
+    @Transactional
+    @Override
+    public List<Type> listType() {
+        return typesRepository.findAll();
     }
 
     @Transactional
