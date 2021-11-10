@@ -17,7 +17,7 @@ public class Blog {
     private Long id;
     @NotBlank(message = "标题不能为空")
     private String title;
-    @NotBlank(message = "内容不能为空")
+//    @NotBlank(message = "内容不能为空")
     private String content;
     private String firstPicture;
     private String flag;
