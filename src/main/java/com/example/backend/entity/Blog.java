@@ -17,16 +17,20 @@ public class Blog {
     private Long id;
     @NotBlank(message = "标题不能为空")
     private String title;
-//    @NotBlank(message = "内容不能为空")
+    @Basic(fetch = FetchType.LAZY)
+    @Lob
+    @NotBlank(message = "内容不能为空")
     private String content;
     private String firstPicture;
     private String flag;
+    @Transient
+    private String tagIds;
     private Integer views;
     private boolean canAppreciate;
     private boolean shareStatement;
     private boolean canComment;
     private boolean isPublished;
-    private boolean isRecommended;
+    private boolean recommend;
     @Temporal(TemporalType.TIMESTAMP)
     private Date createTime;
     @Temporal(TemporalType.TIMESTAMP)

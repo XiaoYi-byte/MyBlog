@@ -5,6 +5,7 @@ import com.example.backend.entity.Blog;
 import com.example.backend.entity.Type;
 import com.example.backend.exception.NotFoundException;
 import com.example.backend.service.BlogService;
+import com.example.backend.vo.BlogQuery;
 import org.springframework.beans.BeanUtils;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.domain.Page;
@@ -17,6 +18,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -35,21 +37,24 @@ public class BlogServiceImpl implements BlogService {
 
     @Override
     public Blog saveBlog(Blog blog) {
+        blog.setCreateTime(new Date());
+        blog.setUpdateTime(new Date());
+        blog.setViews(0);
         return blogRepository.save(blog);
     }
 
     @Override
-    public Page<Blog> listBlog(Pageable pageable, Blog blog) {
+    public Page<Blog> listBlog(Pageable pageable, BlogQuery blog) {
         return blogRepository.findAll((Specification<Blog>) (root, query, criteriaBuilder) -> {
             List<Predicate> predicates = new ArrayList<>();
-            if (blog.getTitle() != null && "".equals(blog.getTitle())) {
+            if (blog.getTitle() != null && !("".equals(blog.getTitle()))) {
                 predicates.add(criteriaBuilder.like(root.get("title"), blog.getTitle()));
             }
-            if (blog.getType() != null && blog.getType().getId() != null) {
-                predicates.add(criteriaBuilder.equal(root.<Type>get("type").get("id"), blog.getType().getId()));
+            if (blog.getTypeId()!= null) {
+                predicates.add(criteriaBuilder.equal(root.<Type>get("type").get("id"), blog.getTypeId()));
             }
-            if (blog.isRecommended()) {
-                predicates.add(criteriaBuilder.equal(root.<Boolean>get("recommend"), blog.isRecommended()));
+            if (blog.getRecommend() != null) {
+                predicates.add(criteriaBuilder.equal(root.<Boolean>get("recommend"), blog.getRecommend()));
             }
 
             query.where(predicates.toArray(new Predicate[0]));

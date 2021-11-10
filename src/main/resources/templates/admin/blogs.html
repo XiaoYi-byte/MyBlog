@@ -90,6 +90,7 @@
                     <th>标题</th>
                     <th>类型</th>
                     <th>推荐</th>
+                    <th>发布</th>
                     <th>更新时间</th>
                     <th>操作</th>
                 </tr>
@@ -99,7 +100,8 @@
                     <td th:text="${iterStat.count}">1</td>
                     <td th:text="${blog.title}">SpringBoot</td>
                     <td th:text="${blog.type.name}">框架</td>
-                    <td th:text="${blog.isRecommended} ? '是' : '否'">是</td>
+                    <td th:text="${blog.recommend} ? '是' : '否'">是</td>
+                    <td th:text="${blog.isPublished} ? '发布' : '草稿'">草稿</td>
                     <td th:text="${blog.updateTime}">2021-11-02 20:06</td>
                     <td>
                         <a href="#" th:href="@{/admin/blogs/{id}/edit(id=${blog.id})}"
@@ -111,7 +113,7 @@
                 </tbody>
                 <tfoot>
                 <tr>
-                    <th colspan="6">
+                    <th colspan="7">
                         <div class="ui mini pagination menu right floated" th:if="${page.totalPages} > 1">
                             <a onclick="page(this)" th:attr="data-page=${page.number} - 1" class="item"
                                th:unless="${page.first}">上一页</a>
@@ -123,6 +125,11 @@
                 </tr>
                 </tfoot>
             </table>
+            <div class="ui success message" th:unless="${#strings.isEmpty(message)}">
+                <i class="close icon"></i>
+                <div class="header">提示：</div>
+                <p th:text="${message}">操作成功！</p>
+            </div>
         </div>
     </div>
 </div>
@@ -181,19 +188,23 @@
         on: 'hover'
     });
 
+    $('.message .close').on('click',function (){
+        $(this).closest('.message').transition('fade')
+    })
     function page(obj) {
         $("[name='page']").val($(obj).data('page'))
         loadData()
     }
 
     $('#search-btn').click(function () {
+        $("[name='page']").val(0)
         loadData()
     })
 
     function loadData() {
         $("#table-container").load("/admin/blogs/search", {
             title: $("[name='title']").val(),
-            typeId: $("[name='typeId ']").val(),
+            typeId: $("[name='typeId']").val(),
             recommend: $("[name='recommend']").prop('checked'),
             page: $("[name='page']").val()
         })
