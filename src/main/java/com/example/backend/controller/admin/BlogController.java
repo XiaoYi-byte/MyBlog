@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -79,5 +80,29 @@ public class BlogController {
             attributes.addFlashAttribute("message","发布失败");
         }
         return "redirect:/admin/blogs";
+    }
+
+    @PostMapping("/blogs/{id}/edit")
+    public String submitEditing(@PathVariable Long id, @Valid Blog blog, RedirectAttributes attributes, HttpSession session){
+        blog.setUser((User) session.getAttribute("user"));
+        blog.setType(typesService.getType(blog.getType().getId()));
+        blog.setTags(tagsService.listTag(blog.getTagIds()));
+        Blog b = blogService.updateBlog(id, blog);
+        if(b != null){
+            attributes.addFlashAttribute("message","编辑成功");
+        } else {
+            attributes.addFlashAttribute("message","编辑失败");
+        }
+        return "redirect:/admin/blogs";
+    }
+
+    @GetMapping("/blogs/{id}/edit")
+    public String editBlog(@PathVariable Long id, Model model){
+        Blog blog = blogService.getBlog(id);
+        model.addAttribute("blog",blog);
+        model.addAttribute("tags",tagsService.listTag());
+        model.addAttribute("types", typesService.listType());
+        model.addAttribute("tagList",tagsService.listTag(blog.getTagIds()));
+        return "admin/blog-post";
     }
 }

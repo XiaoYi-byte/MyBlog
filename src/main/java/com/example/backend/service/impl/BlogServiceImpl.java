@@ -69,6 +69,7 @@ public class BlogServiceImpl implements BlogService {
             throw new NotFoundException("未查找到该博客！");
         }
         BeanUtils.copyProperties(blog, b);
+        b.setUpdateTime(new Date());
         return blogRepository.save(b);
     }
 
