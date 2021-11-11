@@ -6,6 +6,7 @@ import com.example.backend.service.BlogService;
 import com.example.backend.service.TagsService;
 import com.example.backend.service.TypesService;
 import com.example.backend.vo.BlogQuery;
+import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -28,6 +29,8 @@ public class BlogController {
     private final TypesService typesService;
     private final TagsService tagsService;
 
+    private BlogQuery blogQuery = new BlogQuery();
+
     public BlogController(BlogService blogService, TypesService typesService, TagsService tagsService) {
         this.blogService = blogService;
         this.typesService = typesService;
@@ -35,15 +38,24 @@ public class BlogController {
     }
 
     @GetMapping("/blogs")
-    public String blogs(@PageableDefault(size = 2, sort = {"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable, BlogQuery blog, Model model) {
+    public String blogs(@PageableDefault(sort = {"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable, BlogQuery blog, Model model) {
         model.addAttribute("types", typesService.listType());
         model.addAttribute("page", blogService.listBlog(pageable, blog));
+        BeanUtils.copyProperties(blog,blogQuery);
+        return "admin/blogs";
+    }
+
+    @GetMapping("/blogs/search")
+    public String searchBlog(@PageableDefault(sort = {"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable, Model model) {
+        model.addAttribute("types", typesService.listType());
+        model.addAttribute("page", blogService.listBlog(pageable, blogQuery));
         return "admin/blogs";
     }
 
     @PostMapping("/blogs/search")
-    public String search(@PageableDefault(size = 2, sort = {"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable, BlogQuery blog, Model model) {
+    public String search(@PageableDefault(sort = {"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable, BlogQuery blog, Model model) {
         model.addAttribute("page", blogService.listBlog(pageable, blog));
+        BeanUtils.copyProperties(blog,blogQuery);
         return "admin/blogs :: blogList";
     }
 

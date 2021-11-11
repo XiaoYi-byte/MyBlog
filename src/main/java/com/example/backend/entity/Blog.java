@@ -29,7 +29,7 @@ public class Blog {
     private boolean canAppreciate;
     private boolean shareStatement;
     private boolean canComment;
-    private boolean isPublished;
+    private boolean published;
     private boolean recommend;
     @Temporal(TemporalType.TIMESTAMP)
     private Date createTime;

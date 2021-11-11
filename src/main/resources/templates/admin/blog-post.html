@@ -51,7 +51,7 @@
 <div class="c-container c-padded-tb-big">
     <div class="ui container">
         <form id="blog-form" action="#" method="post" class="ui form" th:object="${blog}" th:action="*{id} == null ? @{/admin/blogs} : @{/admin/blogs/{id}(id=*{id})}">
-            <input type="hidden" name="isPublished">
+            <input type="hidden" name="Published">
             <!-- header -->
             <div class="required field">
                 <div class="ui left labeled input">
@@ -151,7 +151,7 @@
 
             <!-- three button -->
             <div class="ui right aligned container">
-                <a href="@{/admin/blogs}">
+                <a href="@{/admin/blogs(page=0)}">
                     <button type="button" class="ui button" onclick="window.history.go(-1)">返回</button>
                 </a>
                 <button id="save-btn" class="ui blue button">保存</button>
@@ -225,12 +225,12 @@
     });
 
     $('#save-btn').click(function (){
-        $('[name="isPublished"]').val(false)
+        $('[name="Published"]').val(false)
         $('#blog-form').submit()
     })
 
     $('#commit-btn').click(function (){
-        $('[name="isPublished"]').val(true)
+        $('[name="Published"]').val(true)
         $('#blog-form').submit()
     })
 

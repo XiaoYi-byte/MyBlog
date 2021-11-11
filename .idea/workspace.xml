@@ -5,14 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0a83e94c-0d94-44d5-8c9a-f27dcc1fbe6e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/backend/vo/BlogQuery.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/log/blog-dev.log" beforeDir="false" afterPath="$PROJECT_DIR$/log/blog-dev.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/blog-dev.log.2021-11-03.0.gz" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/backend/controller/admin/BlogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/backend/controller/admin/BlogController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/backend/entity/Blog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/backend/entity/Blog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/backend/service/BlogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/backend/service/BlogService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/backend/service/TagsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/backend/service/TagsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/backend/service/impl/BlogServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/backend/service/impl/BlogServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/backend/service/impl/TagsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/backend/service/impl/TagsServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/blog-post.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/blog-post.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/blogs.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/blogs.html" afterDir="false" />
     </list>
@@ -146,7 +142,7 @@
       <workItem from="1636094664760" duration="10701000" />
       <workItem from="1636182106021" duration="38144000" />
       <workItem from="1636274571423" duration="38888000" />
-      <workItem from="1636526905778" duration="7289000" />
+      <workItem from="1636526905778" duration="15145000" />
     </task>
     <servers />
   </component>
@@ -175,8 +171,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/backend/controller/admin/BlogController.java</url>
-          <line>62</line>
-          <option name="timeStamp" value="15" />
+          <line>57</line>
+          <option name="timeStamp" value="19" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -57,16 +57,20 @@
                     <input type="text" name="title" placeholder="标题">
                 </div>
                 <div class="field">
-                    <div class="ui selection dropdown">
-                        <input type="hidden" name="typeId">
-                        <i class="dropdown icon"></i>
-                        <div class="default text">分类</div>
-                        <div class="menu">
-                            <div th:each="type : ${types}" class="item" th:data-value="${type.id}"
-                                 th:text="${type.name}">错误日志
+                    <div class="ui labeled action input">
+                        <div class="ui type selection dropdown">
+                            <input type="hidden" name="typeId">
+                            <i class="dropdown icon"></i>
+                            <div class="default text">分类</div>
+                            <div class="menu">
+                                <div th:each="type : ${types}" class="item" th:data-value="${type.id}"
+                                     th:text="${type.name}">错误日志
+                                </div>
                             </div>
                         </div>
+                        <button id="clear-btn" class="ui compact button">clear</button>
                     </div>
+
                 </div>
                 <div class="field">
                     <div class="ui checkbox">
@@ -101,7 +105,7 @@
                     <td th:text="${blog.title}">SpringBoot</td>
                     <td th:text="${blog.type.name}">框架</td>
                     <td th:text="${blog.recommend} ? '是' : '否'">是</td>
-                    <td th:text="${blog.isPublished} ? '发布' : '草稿'">草稿</td>
+                    <td th:text="${blog.published} ? '发布' : '草稿'">草稿</td>
                     <td th:text="${blog.updateTime}">2021-11-02 20:06</td>
                     <td>
                         <a href="#" th:href="@{/admin/blogs/{id}/edit(id=${blog.id})}"
@@ -115,10 +119,8 @@
                 <tr>
                     <th colspan="7">
                         <div class="ui mini pagination menu right floated" th:if="${page.totalPages} > 1">
-                            <a onclick="page(this)" th:attr="data-page=${page.number} - 1" class="item"
-                               th:unless="${page.first}">上一页</a>
-                            <a onclick="page(this)" th:attr="data-page=${page.number} + 1" class="item"
-                               th:unless="${page.last}">下一页</a>
+                            <a th:href="@{/admin/blogs/search(page=${page.number} - 1)}" class="item" th:unless="${page.first}">上一页</a>
+                            <a th:href="@{/admin/blogs/search(page=${page.number} + 1)}" class="item" th:unless="${page.last}">下一页</a>
                         </div>
                         <a th:href="@{/admin/blogs/addBlog}" class="ui mini teal basic button">新增</a>
                     </th>
@@ -191,6 +193,7 @@
     $('.message .close').on('click',function (){
         $(this).closest('.message').transition('fade')
     })
+
     function page(obj) {
         $("[name='page']").val($(obj).data('page'))
         loadData()
@@ -199,6 +202,10 @@
     $('#search-btn').click(function () {
         $("[name='page']").val(0)
         loadData()
+    })
+
+    $('#clear-btn').on('click',function (){
+        $('.ui.type.dropdown').dropdown('clear')
     })
 
     function loadData() {
