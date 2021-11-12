@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TagsServiceImpl implements TagsService {
@@ -59,7 +60,7 @@ public class TagsServiceImpl implements TagsService {
 
     private List<Long> convertToList(String tagIds){
         List<Long> tagIdList = new ArrayList<>();
-        if("".equals(tagIds) && tagIds != null) {
+        if(!"".equals(tagIds) && tagIds != null) {
             String[] tagIdArray = tagIds.split(",");
             for (int i = 0; i < tagIdArray.length; i++) {
                 tagIdList.add(Long.parseLong(tagIdArray[i]));

@@ -44,4 +44,24 @@ public class Blog {
     private User user;
     @OneToMany(mappedBy = "blog")
     private List<Comment> comments = new ArrayList<>();
+
+    public void init() {
+        tagIds = listTagIds(tags);
+    }
+
+    private String listTagIds(List<Tag> list){
+        if(!list.isEmpty()) {
+            StringBuilder ids = new StringBuilder();
+            boolean flag = false;
+            for (Tag tag : list) {
+                if(flag)
+                    ids.append(",");
+                else
+                    flag = true;
+                ids.append(tag.getId());
+            }
+            return ids.toString();
+        }
+        return tagIds;
+    }
 }

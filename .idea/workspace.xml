@@ -9,7 +9,8 @@
       <change beforePath="$PROJECT_DIR$/log/blog-dev.log.2021-11-03.0.gz" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/log/blog-dev.log.2021-11-04.0.gz" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/backend/controller/admin/BlogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/backend/controller/admin/BlogController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/backend/service/impl/BlogServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/backend/service/impl/BlogServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/backend/entity/Blog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/backend/entity/Blog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/backend/service/impl/TagsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/backend/service/impl/TagsServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/blog-post.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/blog-post.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -142,7 +143,7 @@
       <workItem from="1636094664760" duration="10701000" />
       <workItem from="1636182106021" duration="38144000" />
       <workItem from="1636274571423" duration="38888000" />
-      <workItem from="1636526905778" duration="23472000" />
+      <workItem from="1636526905778" duration="33291000" />
     </task>
     <servers />
   </component>
@@ -171,8 +172,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/backend/controller/admin/BlogController.java</url>
-          <line>89</line>
-          <option name="timeStamp" value="21" />
+          <line>90</line>
+          <option name="timeStamp" value="26" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

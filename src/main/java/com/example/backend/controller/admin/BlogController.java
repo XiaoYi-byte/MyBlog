@@ -1,6 +1,7 @@
 package com.example.backend.controller.admin;
 
 import com.example.backend.entity.Blog;
+import com.example.backend.entity.Tag;
 import com.example.backend.entity.User;
 import com.example.backend.service.BlogService;
 import com.example.backend.service.TagsService;
@@ -21,6 +22,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @RequestMapping("/admin")
@@ -86,7 +88,7 @@ public class BlogController {
     public String submitEditing(@PathVariable Long id, @Valid Blog blog, RedirectAttributes attributes, HttpSession session){
         blog.setUser((User) session.getAttribute("user"));
         blog.setType(typesService.getType(blog.getType().getId()));
-        blog.setTags(tagsService.listTag(blog.getTagIds()));
+        blog.setTags(tagsService.listTag());
         Blog b = blogService.updateBlog(id, blog);
         if(b != null){
             attributes.addFlashAttribute("message","编辑成功");
@@ -98,11 +100,19 @@ public class BlogController {
 
     @GetMapping("/blogs/{id}/edit")
     public String editBlog(@PathVariable Long id, Model model){
+        List<Tag> tags = tagsService.listTag();
         Blog blog = blogService.getBlog(id);
+        blog.init();
         model.addAttribute("blog",blog);
-        model.addAttribute("tags",tagsService.listTag());
+        model.addAttribute("tags",tags);
         model.addAttribute("types", typesService.listType());
-        model.addAttribute("tagList",tagsService.listTag(blog.getTagIds()));
         return "admin/blog-post";
+    }
+
+    @GetMapping("/blogs/{id}/delete")
+    public String deleteBlog(@PathVariable Long id, RedirectAttributes attributes) {
+        blogService.deleteBlog(id);
+        attributes.addFlashAttribute("message", "删除成功");
+        return "redirect:/admin/blogs";
     }
 }
