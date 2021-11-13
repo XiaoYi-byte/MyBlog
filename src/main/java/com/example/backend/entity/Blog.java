@@ -26,6 +26,7 @@ public class Blog {
     @Transient
     private String tagIds;
     private Integer views;
+    private String description;
     private boolean canAppreciate;
     private boolean shareStatement;
     private boolean canComment;

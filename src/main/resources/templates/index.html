@@ -47,361 +47,56 @@
                             <h3 class="ui teal header">博客</h3>
                         </div>
                         <div class="right aligned column">
-                            共<h2 class="ui orange header c-inline-block c-text-thin">14</h2>篇
+                            共<h2 class="ui orange header c-inline-block c-text-thin" th:text="${page.totalElements}">
+                            14</h2>篇
                         </div>
                     </div>
                 </div>
 
                 <!-- content -->
                 <div class="ui attached segment">
-                    <div class="ui vertical segment c-padded-tb-large">
-                        <div class="ui padded mobile reversed stackable grid">
+                    <div class="ui vertical segment c-padded-tb-large" th:each="blog : ${page.content}">
+                        <div class="ui middle aligned mobile reversed stackable grid">
                             <!-- text -->
                             <div class="eleven wide column">
-                                <h3 class="ui header">Spring boot 启动</h3>
-                                <p class="c-text">
-                                    四大皆空发哈坚实的开放后就开始的的数据发哈空间的复活节卡萨烦得很近来可好空间第三方金华市大飞机狂欢节开始答复后即可拉萨的恢复健康了</p>
+                                <h3 class="ui header"><a href="#" class="c-black" th:text="${blog.title}"
+                                                         th:href="@{/blog/{id}(id=${blog.id})}" target="_blank">Spring
+                                    boot 启动</a></h3>
+                                <p class="c-text" th:text="|${blog.description}......|">
+                                    四大皆空发哈坚实的开放后就开始的的数据发哈空间的复活节卡萨烦得</p>
                                 <div class="ui stackable grid">
                                     <div class="eleven wide column">
                                         <div class="ui mini horizontal link list">
                                             <div class="item">
                                                 <img src="https://unsplash.it/100/100?image=1005" alt=""
+                                                     th:src="@{${blog.user.avatar}}"
                                                      class="ui avatar image">
                                                 <div class="content">
-                                                    <a href="#" class="header">XiaoYi-byte</a>
+                                                    <a href="#" class="header" th:text="${blog.user.nickname}">XiaoYi-byte</a>
                                                 </div>
                                             </div>
                                             <div class="item">
-                                                <i class="calendar icon"></i> 2021-11-01
+                                                <i class="calendar icon"></i> <span
+                                                    th:text="${#dates.format(blog.updateTime,'yyyy-MM-dd')}">2021-11-01</span>
                                             </div>
                                             <div class="item">
-                                                <i class="eye icon"></i> 1234
+                                                <i class="eye icon"></i> <span th:text="${blog.views}">1234</span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="right aligned five wide column">
                                         <a href="#" target="_blank"
-                                           class="ui teal basic label c-padded-tiny c-text-thin">认知升级</a>
+                                           class="ui teal basic label c-padded-tiny c-text-thin"
+                                           th:text="${blog.type.name}">认知升级</a>
                                     </div>
                                 </div>
                             </div>
                             <!-- photo -->
                             <div class="five wide column">
-                                <a href="#" target="_blank">
+                                <a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank">
                                     <img src="https://unsplash.it/800/450?image=1005" alt=""
+                                         th:src="@{${blog.firstPicture}}"
                                          class="ui rounded image">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="ui vertical segment c-padded-tb-large">
-                        <div class="ui padded mobile reversed stackable grid">
-                            <!-- text -->
-                            <div class="eleven wide column">
-                                <h3 class="ui header">Spring boot 启动</h3>
-                                <p class="c-text">
-                                    四大皆空发哈坚实的开放后就开始的的数据发哈空间的复活节卡萨烦得很近来可好空间第三方金华市大飞机狂欢节开始答复后即可拉萨的恢复健康了</p>
-                                <div class="ui stackable grid">
-                                    <div class="eleven wide column">
-                                        <div class="ui mini horizontal link list">
-                                            <div class="item">
-                                                <img src="https://unsplash.it/100/100?image=1005" alt=""
-                                                     class="ui avatar image">
-                                                <div class="content">
-                                                    <a href="#" class="header">XiaoYi-byte</a>
-                                                </div>
-                                            </div>
-                                            <div class="item">
-                                                <i class="calendar icon"></i> 2021-11-01
-                                            </div>
-                                            <div class="item">
-                                                <i class="eye icon"></i> 1234
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="right aligned five wide column">
-                                        <a href="#" target="_blank"
-                                           class="ui teal basic label c-padded-tiny c-text-thin">认知升级</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- photo -->
-                            <div class="five wide column">
-                                <a href="#" target="_blank">
-                                    <img src="https://unsplash.it/800/450?image=1005" alt="" class="ui rounded image">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="ui vertical segment c-padded-tb-large">
-                        <div class="ui padded mobile reversed stackable grid">
-                            <!-- text -->
-                            <div class="eleven wide column">
-                                <h3 class="ui header">Spring boot 启动</h3>
-                                <p class="c-text">
-                                    四大皆空发哈坚实的开放后就开始的的数据发哈空间的复活节卡萨烦得很近来可好空间第三方金华市大飞机狂欢节开始答复后即可拉萨的恢复健康了</p>
-                                <div class="ui stackable grid">
-                                    <div class="eleven wide column">
-                                        <div class="ui mini horizontal link list">
-                                            <div class="item">
-                                                <img src="https://unsplash.it/100/100?image=1005" alt=""
-                                                     class="ui avatar image">
-                                                <div class="content">
-                                                    <a href="#" class="header">XiaoYi-byte</a>
-                                                </div>
-                                            </div>
-                                            <div class="item">
-                                                <i class="calendar icon"></i> 2021-11-01
-                                            </div>
-                                            <div class="item">
-                                                <i class="eye icon"></i> 1234
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="right aligned five wide column">
-                                        <a href="#" target="_blank"
-                                           class="ui teal basic label c-padded-tiny c-text-thin">认知升级</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- photo -->
-                            <div class="five wide column">
-                                <a href="#" target="_blank">
-                                    <img src="https://unsplash.it/800/450?image=1005" alt="" class="ui rounded image">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="ui vertical segment c-padded-tb-large">
-                        <div class="ui padded mobile reversed stackable grid">
-                            <!-- text -->
-                            <div class="eleven wide column">
-                                <h3 class="ui header">Spring boot 启动</h3>
-                                <p class="c-text">
-                                    四大皆空发哈坚实的开放后就开始的的数据发哈空间的复活节卡萨烦得很近来可好空间第三方金华市大飞机狂欢节开始答复后即可拉萨的恢复健康了</p>
-                                <div class="ui stackable grid">
-                                    <div class="eleven wide column">
-                                        <div class="ui mini horizontal link list">
-                                            <div class="item">
-                                                <img src="https://unsplash.it/100/100?image=1005" alt=""
-                                                     class="ui avatar image">
-                                                <div class="content">
-                                                    <a href="#" class="header">XiaoYi-byte</a>
-                                                </div>
-                                            </div>
-                                            <div class="item">
-                                                <i class="calendar icon"></i> 2021-11-01
-                                            </div>
-                                            <div class="item">
-                                                <i class="eye icon"></i> 1234
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="right aligned five wide column">
-                                        <a href="#" target="_blank"
-                                           class="ui teal basic label c-padded-tiny c-text-thin">认知升级</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- photo -->
-                            <div class="five wide column">
-                                <a href="#" target="_blank">
-                                    <img src="https://unsplash.it/800/450?image=1005" alt="" class="ui rounded image">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="ui vertical segment c-padded-tb-large">
-                        <div class="ui padded mobile reversed stackable grid">
-                            <!-- text -->
-                            <div class="eleven wide column">
-                                <h3 class="ui header">Spring boot 启动</h3>
-                                <p class="c-text">
-                                    四大皆空发哈坚实的开放后就开始的的数据发哈空间的复活节卡萨烦得很近来可好空间第三方金华市大飞机狂欢节开始答复后即可拉萨的恢复健康了</p>
-                                <div class="ui stackable grid">
-                                    <div class="eleven wide column">
-                                        <div class="ui mini horizontal link list">
-                                            <div class="item">
-                                                <img src="https://unsplash.it/100/100?image=1005" alt=""
-                                                     class="ui avatar image">
-                                                <div class="content">
-                                                    <a href="#" class="header">XiaoYi-byte</a>
-                                                </div>
-                                            </div>
-                                            <div class="item">
-                                                <i class="calendar icon"></i> 2021-11-01
-                                            </div>
-                                            <div class="item">
-                                                <i class="eye icon"></i> 1234
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="right aligned five wide column">
-                                        <a href="#" target="_blank"
-                                           class="ui teal basic label c-padded-tiny c-text-thin">认知升级</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- photo -->
-                            <div class="five wide column">
-                                <a href="#" target="_blank">
-                                    <img src="https://unsplash.it/800/450?image=1005" alt="" class="ui rounded image">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="ui vertical segment c-padded-tb-large">
-                        <div class="ui padded mobile reversed stackable grid">
-                            <!-- text -->
-                            <div class="eleven wide column">
-                                <h3 class="ui header">Spring boot 启动</h3>
-                                <p class="c-text">
-                                    四大皆空发哈坚实的开放后就开始的的数据发哈空间的复活节卡萨烦得很近来可好空间第三方金华市大飞机狂欢节开始答复后即可拉萨的恢复健康了</p>
-                                <div class="ui stackable grid">
-                                    <div class="eleven wide column">
-                                        <div class="ui mini horizontal link list">
-                                            <div class="item">
-                                                <img src="https://unsplash.it/100/100?image=1005" alt=""
-                                                     class="ui avatar image">
-                                                <div class="content">
-                                                    <a href="#" class="header">XiaoYi-byte</a>
-                                                </div>
-                                            </div>
-                                            <div class="item">
-                                                <i class="calendar icon"></i> 2021-11-01
-                                            </div>
-                                            <div class="item">
-                                                <i class="eye icon"></i> 1234
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="right aligned five wide column">
-                                        <a href="#" target="_blank"
-                                           class="ui teal basic label c-padded-tiny c-text-thin">认知升级</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- photo -->
-                            <div class="five wide column">
-                                <a href="#" target="_blank">
-                                    <img src="https://unsplash.it/800/450?image=1005" alt="" class="ui rounded image">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="ui vertical segment c-padded-tb-large">
-                        <div class="ui padded mobile reversed stackable grid">
-                            <!-- text -->
-                            <div class="eleven wide column">
-                                <h3 class="ui header">Spring boot 启动</h3>
-                                <p class="c-text">
-                                    四大皆空发哈坚实的开放后就开始的的数据发哈空间的复活节卡萨烦得很近来可好空间第三方金华市大飞机狂欢节开始答复后即可拉萨的恢复健康了</p>
-                                <div class="ui stackable grid">
-                                    <div class="eleven wide column">
-                                        <div class="ui mini horizontal link list">
-                                            <div class="item">
-                                                <img src="https://unsplash.it/100/100?image=1005" alt=""
-                                                     class="ui avatar image">
-                                                <div class="content">
-                                                    <a href="#" class="header">XiaoYi-byte</a>
-                                                </div>
-                                            </div>
-                                            <div class="item">
-                                                <i class="calendar icon"></i> 2021-11-01
-                                            </div>
-                                            <div class="item">
-                                                <i class="eye icon"></i> 1234
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="right aligned five wide column">
-                                        <a href="#" target="_blank"
-                                           class="ui teal basic label c-padded-tiny c-text-thin">认知升级</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- photo -->
-                            <div class="five wide column">
-                                <a href="#" target="_blank">
-                                    <img src="https://unsplash.it/800/450?image=1005" alt="" class="ui rounded image">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="ui vertical segment c-padded-tb-large">
-                        <div class="ui padded mobile reversed stackable grid">
-                            <!-- text -->
-                            <div class="eleven wide column">
-                                <h3 class="ui header">Spring boot 启动</h3>
-                                <p class="c-text">
-                                    四大皆空发哈坚实的开放后就开始的的数据发哈空间的复活节卡萨烦得很近来可好空间第三方金华市大飞机狂欢节开始答复后即可拉萨的恢复健康了</p>
-                                <div class="ui stackable grid">
-                                    <div class="eleven wide column">
-                                        <div class="ui mini horizontal link list">
-                                            <div class="item">
-                                                <img src="https://unsplash.it/100/100?image=1005" alt=""
-                                                     class="ui avatar image">
-                                                <div class="content">
-                                                    <a href="#" class="header">XiaoYi-byte</a>
-                                                </div>
-                                            </div>
-                                            <div class="item">
-                                                <i class="calendar icon"></i> 2021-11-01
-                                            </div>
-                                            <div class="item">
-                                                <i class="eye icon"></i> 1234
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="right aligned five wide column">
-                                        <a href="#" target="_blank"
-                                           class="ui teal basic label c-padded-tiny c-text-thin">认知升级</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- photo -->
-                            <div class="five wide column">
-                                <a href="#" target="_blank">
-                                    <img src="https://unsplash.it/800/450?image=1005" alt="" class="ui rounded image">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="ui vertical segment c-padded-tb-large">
-                        <div class="ui padded mobile reversed stackable grid">
-                            <!-- text -->
-                            <div class="eleven wide column">
-                                <h3 class="ui header">Spring boot 启动</h3>
-                                <p class="c-text">
-                                    四大皆空发哈坚实的开放后就开始的的数据发哈空间的复活节卡萨烦得很近来可好空间第三方金华市大飞机狂欢节开始答复后即可拉萨的恢复健康了</p>
-                                <div class="ui stackable grid">
-                                    <div class="eleven wide column">
-                                        <div class="ui mini horizontal link list">
-                                            <div class="item">
-                                                <img src="https://unsplash.it/100/100?image=1005" alt=""
-                                                     class="ui avatar image">
-                                                <div class="content">
-                                                    <a href="#" class="header">XiaoYi-byte</a>
-                                                </div>
-                                            </div>
-                                            <div class="item">
-                                                <i class="calendar icon"></i> 2021-11-01
-                                            </div>
-                                            <div class="item">
-                                                <i class="eye icon"></i> 1234
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="right aligned five wide column">
-                                        <a href="#" target="_blank"
-                                           class="ui teal basic label c-padded-tiny c-text-thin">认知升级</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- photo -->
-                            <div class="five wide column">
-                                <a href="#" target="_blank">
-                                    <img src="https://unsplash.it/800/450?image=1005" alt="" class="ui rounded image">
                                 </a>
                             </div>
                         </div>
@@ -409,13 +104,15 @@
                 </div>
 
                 <!-- footer -->
-                <div class="ui attached bottom segment">
+                <div class="ui attached bottom segment" th:if="${page.totalPages} > 1">
                     <div class="ui middle aligned two column grid">
                         <div class="column">
-                            <a href="#" class="ui teal basic button">上一页</a>
+                            <a th:href="@{/(page=${page.number} - 1)}" class="item"
+                               th:unless="${page.first}">上一页</a>
                         </div>
                         <div class="right aligned column">
-                            <a href="#" class="ui teal basic button">下一页</a>
+                            <a th:href="@{/(page=${page.number} + 1)}" class="item"
+                               th:unless="${page.last}">下一页</a>
                         </div>
                     </div>
                 </div>
@@ -430,35 +127,15 @@
                                 <i class="idea icon"></i>分类
                             </div>
                             <div class="right aligned column">
-                                <a href="#" target="_blank">more <i class="angle double right icon"></i></a>
+                                <a href="#" target="_blank" th:href="@{/types}">more <i class="angle double right icon"></i></a>
                             </div>
                         </div>
                     </div>
                     <div class="ui teal segment">
                         <div class="ui fluid vertical menu">
-                            <a href="#" class="item">
-                                学习日志
-                                <div class="ui teal left pointing label">13</div>
-                            </a>
-                            <a href="#" class="item">
-                                学习日志
-                                <div class="ui teal left pointing label">13</div>
-                            </a>
-                            <a href="#" class="item">
-                                学习日志
-                                <div class="ui teal left pointing label">13</div>
-                            </a>
-                            <a href="#" class="item">
-                                学习日志
-                                <div class="ui teal left pointing label">13</div>
-                            </a>
-                            <a href="#" class="item">
-                                学习日志
-                                <div class="ui teal left pointing label">13</div>
-                            </a>
-                            <a href="#" class="item">
-                                学习日志
-                                <div class="ui teal left pointing label">13</div>
+                            <a href="#" class="item" th:each="type : ${types}">
+                                <span th:text="${type.name}">学习日志</span>
+                                <div class="ui teal left pointing label" th:text="${#arrays.length(type.blogs)}">13</div>
                             </a>
                         </div>
                     </div>
@@ -472,34 +149,14 @@
                                 <i class="tags icon"></i>标签
                             </div>
                             <div class="right aligned column">
-                                <a href="#" target="_blank">more <i class="angle double right icon"></i></a>
+                                <a href="#" target="_blank" th:href="@{/tags}">more <i class="angle double right icon"></i></a>
                             </div>
                         </div>
                     </div>
                     <div class="ui segment">
-                        <a href="#" target="_blank" class="ui teal basic left pointing label c-margin-tb-tiny">
-                            Spring
-                            <div class="detail">23</div>
-                        </a>
-                        <a href="#" target="_blank" class="ui teal basic left pointing label c-margin-tb-tiny">
-                            Spring Boot
-                            <div class="detail">23</div>
-                        </a>
-                        <a href="#" target="_blank" class="ui teal basic left pointing label c-margin-tb-tiny">
-                            Java
-                            <div class="detail">23</div>
-                        </a>
-                        <a href="#" target="_blank" class="ui teal basic left pointing label c-margin-tb-tiny">
-                            Spring Boot
-                            <div class="detail">23</div>
-                        </a>
-                        <a href="#" target="_blank" class="ui teal basic left pointing label c-margin-tb-tiny">
-                            C++
-                            <div class="detail">23</div>
-                        </a>
-                        <a href="#" target="_blank" class="ui teal basic left pointing label c-margin-tb-tiny">
-                            Spring Boot
-                            <div class="detail">23</div>
+                        <a href="#" target="_blank" class="ui teal basic left pointing label c-margin-tb-tiny" th:each="tag : ${tags}">
+                            <span th:text="${tag.name}">Spring</span>
+                            <div class="detail" th:text="${#arrays.length(tag.blogs)}">23</div>
                         </a>
                     </div>
                 </div>
@@ -509,38 +166,8 @@
                     <div class="ui secondary segment">
                         <i class="bookmark icon"></i>最新推荐
                     </div>
-                    <div class="ui segment">
-                        <a href="#" target="_blank" class="c-black m-text-thin">
-                            用户故事（User Story）
-                        </a>
-                    </div>
-                    <div class="ui segment">
-                        <a href="#" target="_blank" class="c-black m-text-thin">
-                            用户故事（User Story）
-                        </a>
-                    </div>
-                    <div class="ui segment">
-                        <a href="#" target="_blank" class="c-black m-text-thin">
-                            用户故事（User Story）
-                        </a>
-                    </div>
-                    <div class="ui segment">
-                        <a href="#" target="_blank" class="c-black m-text-thin">
-                            用户故事（User Story）
-                        </a>
-                    </div>
-                    <div class="ui segment">
-                        <a href="#" target="_blank" class="c-black m-text-thin">
-                            用户故事（User Story）
-                        </a>
-                    </div>
-                    <div class="ui segment">
-                        <a href="#" target="_blank" class="c-black m-text-thin">
-                            用户故事（User Story）
-                        </a>
-                    </div>
-                    <div class="ui segment">
-                        <a href="#" target="_blank" class="c-black m-text-thin">
+                    <div class="ui segment" th:each="topBlog : ${topBlogs}">
+                        <a href="#" target="_blank" class="c-black m-text-thin" th:text="${topBlog.title}" th:href="@{/blog/{id}(id=${topBlog.id})}">
                             用户故事（User Story）
                         </a>
                     </div>
@@ -549,7 +176,8 @@
                 <!-- QR code -->
                 <h4 class="ui horizontal divider header  c-margin-top-large">扫码关注我</h4>
                 <div class="ui centered card c-margin-top-large" style="width: 11em;">
-                    <img src="../static/images/wechat.jpg" th:src="@{/images/wechat.jpg}" alt="" class="ui rounded image">
+                    <img src="../static/images/wechat.jpg" th:src="@{/images/wechat.jpg}" alt=""
+                         class="ui rounded image">
                 </div>
             </div>
         </div>
@@ -563,7 +191,8 @@
             <div class="three wide column">
                 <div class="ui inverted link list">
                     <div class="item">
-                        <img src="../static/images/wechat.jpg" th:src="@{/images/wechat.jpg}" class="ui rounded image" alt="my wechat QR code"
+                        <img src="../static/images/wechat.jpg" th:src="@{/images/wechat.jpg}" class="ui rounded image"
+                             alt="my wechat QR code"
                              style="width: 110px;">
                     </div>
                 </div>

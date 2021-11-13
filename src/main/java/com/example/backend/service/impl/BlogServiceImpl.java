@@ -3,20 +3,17 @@ package com.example.backend.service.impl;
 import com.example.backend.dao.BlogRepository;
 import com.example.backend.entity.Blog;
 import com.example.backend.entity.Type;
-import com.example.backend.exception.NotFoundException;
 import com.example.backend.service.BlogService;
+import com.example.backend.util.MyBeanUtils;
 import com.example.backend.vo.BlogQuery;
 import org.springframework.beans.BeanUtils;
-import org.springframework.context.annotation.Bean;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
-
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -63,12 +60,20 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
+    public Page<Blog> listBlog(Pageable pageable) {
+        return blogRepository.findAll(pageable);
+    }
+
+    @Override
+    public List<Blog> listBlogTop(Integer size) {
+        Pageable pageable = PageRequest.of(0,size, Sort.by(Sort.Direction.DESC,"updateTime"));
+        return blogRepository.findTop(pageable);
+    }
+
+    @Override
     public Blog updateBlog(Long id, Blog blog) {
         Blog b = blogRepository.getById(id);
-        if (b == null) {
-            throw new NotFoundException("未查找到该博客！");
-        }
-        BeanUtils.copyProperties(blog, b);
+        BeanUtils.copyProperties(blog, b, MyBeanUtils.getNullPropertyNames(blog));
         b.setUpdateTime(new Date());
         return blogRepository.save(b);
     }

@@ -6,13 +6,14 @@ import com.example.backend.exception.NotFoundException;
 import com.example.backend.service.TagsService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class TagsServiceImpl implements TagsService {
@@ -47,6 +48,7 @@ public class TagsServiceImpl implements TagsService {
         return tagsRepository.findAll(pageable);
     }
 
+    @Transactional
     @Override
     public List<Tag> listTag() {
         return tagsRepository.findAll();
@@ -56,6 +58,13 @@ public class TagsServiceImpl implements TagsService {
     @Override
     public List<Tag> listTag(String tagIds) {
         return tagsRepository.findAllById(convertToList(tagIds));
+    }
+
+    @Transactional
+    @Override
+    public List<Tag> listTagTop(Integer size) {
+        Pageable pageable = PageRequest.of(0,size, Sort.by(Sort.Direction.DESC,"blogs.size"));
+        return tagsRepository.findTop(pageable);
     }
 
     private List<Long> convertToList(String tagIds){

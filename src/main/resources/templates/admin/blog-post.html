@@ -119,6 +119,11 @@
                 </div>
             </div>
 
+            <!-- description-->
+            <div class="required field">
+                <textarea name="description" th:text="*{description}" placeholder="博客描述..." maxlength="200"></textarea>
+            </div>
+
             <!-- four checkbox -->
             <div class="inline fields">
                 <div class="field">
@@ -255,14 +260,21 @@
                 identifier: 'type',
                 rules: [{
                     type: 'empty',
-                    prompt: '内容：请输入分类名称'
+                    prompt: '分类：请输入分类名称'
                 }]
             },
             firstPicture: {
                 identifier: 'firstPicture',
                 rules: [{
                     type: 'empty',
-                    prompt: '内容：请输入首图地址'
+                    prompt: '首图：请输入首图地址'
+                }]
+            },
+            description: {
+                identifier: 'description',
+                rules: [{
+                    type: 'empty',
+                    prompt: '博客描述：请输入博客描述'
                 }]
             }
         }
