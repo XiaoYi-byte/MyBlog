@@ -107,11 +107,11 @@
                 <div class="ui attached bottom segment" th:if="${page.totalPages} > 1">
                     <div class="ui middle aligned two column grid">
                         <div class="column">
-                            <a th:href="@{/(page=${page.number} - 1)}" class="item"
+                            <a th:href="@{/(page=${page.number} - 1)}" class="ui mini teal basic button"
                                th:unless="${page.first}">上一页</a>
                         </div>
                         <div class="right aligned column">
-                            <a th:href="@{/(page=${page.number} + 1)}" class="item"
+                            <a th:href="@{/(page=${page.number} + 1)}" class="ui mini teal basic button"
                                th:unless="${page.last}">下一页</a>
                         </div>
                     </div>

@@ -27,8 +27,15 @@ public class IndexController {
         model.addAttribute("page", blogService.listBlog(pageable));
         model.addAttribute("types", typesService.listTypeTop(6));
         model.addAttribute("tags", tagsService.listTagTop(10));
-        model.addAttribute("topBlogs",blogService.listBlogTop(8));
+        model.addAttribute("topBlogs", blogService.listBlogTop(8));
         return "index";
+    }
+
+    @PostMapping("/search")
+    public String search(@PageableDefault(sort = {"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable, @RequestParam String query, Model model) {
+        model.addAttribute("page", blogService.listBlog("%" + query + "%", pageable));
+        model.addAttribute("query", query);
+        return "search";
     }
 
     @GetMapping("/blog/{id}")
