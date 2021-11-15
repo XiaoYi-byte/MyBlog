@@ -43,7 +43,6 @@ public class IndexController {
     public String blog(@PathVariable Long id, Model model) {
         Blog blog = blogService.getAndConvert(id);
         model.addAttribute("blog",blog);
-        model.addAttribute("tags",tagsService.listTag(blog.getTagIds()));
         return "blog";
     }
 

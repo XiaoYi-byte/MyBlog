@@ -3,6 +3,7 @@ package com.example.backend.service.impl;
 import com.example.backend.dao.BlogRepository;
 import com.example.backend.entity.Blog;
 import com.example.backend.entity.Type;
+import com.example.backend.exception.NotFoundException;
 import com.example.backend.service.BlogService;
 import com.example.backend.util.MarkdownUtils;
 import com.example.backend.util.MyBeanUtils;
@@ -39,7 +40,7 @@ public class BlogServiceImpl implements BlogService {
         Blog b = new Blog();
         BeanUtils.copyProperties(blog,b);
         b.setContent(MarkdownUtils.markdownToHtmlExtensions(blog.getContent()));
-        return null;
+        return b;
     }
 
     @Override

@@ -5,16 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0a83e94c-0d94-44d5-8c9a-f27dcc1fbe6e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/backend/util/MarkdownUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/log/blog-dev.log" beforeDir="false" afterPath="$PROJECT_DIR$/log/blog-dev.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/blog-dev.log.2021-11-06.0.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/blog-dev.log.2021-11-07.0.gz" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/backend/controller/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/backend/controller/IndexController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/backend/controller/admin/BlogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/backend/controller/admin/BlogController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/backend/service/BlogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/backend/service/BlogService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/backend/service/impl/BlogServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/backend/service/impl/BlogServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/blog-post.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/blog-post.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/blog.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/blog.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +74,7 @@
       <recent name="com.example.backend.entity" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MarkdownUtils">
+  <component name="RunManager" selected="Spring Boot.BackendApplication">
     <configuration name="MD5Utils" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.backend.util.MD5Utils" />
       <module name="backend" />
@@ -163,7 +157,7 @@
       <workItem from="1636274571423" duration="38888000" />
       <workItem from="1636526905778" duration="33291000" />
       <workItem from="1636771706185" duration="12973000" />
-      <workItem from="1636875351878" duration="5547000" />
+      <workItem from="1636875351878" duration="7085000" />
     </task>
     <servers />
   </component>
@@ -183,8 +177,23 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/backend/controller/IndexController.java</url>
+          <line>43</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/backend/controller/admin/BlogController.java</url>
+          <line>74</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
+        <PinnedItemInfo parentTag="com.example.backend.entity.Blog" memberName="type" />
         <PinnedItemInfo parentTag="com.example.backend.entity.Type" memberName="name" />
       </pinned-members>
     </pin-to-top-manager>
