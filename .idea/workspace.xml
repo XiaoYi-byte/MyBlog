@@ -5,14 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0a83e94c-0d94-44d5-8c9a-f27dcc1fbe6e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/search.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/backend/util/MarkdownUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/log/blog-dev.log" beforeDir="false" afterPath="$PROJECT_DIR$/log/blog-dev.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/blog-dev.log.2021-11-06.0.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/backend/controller/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/backend/controller/IndexController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/backend/dao/BlogRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/backend/dao/BlogRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/backend/controller/admin/BlogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/backend/controller/admin/BlogController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/backend/service/BlogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/backend/service/BlogService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/backend/service/impl/BlogServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/backend/service/impl/BlogServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/_fragments.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/_fragments.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/blog-post.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/blog-post.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/blog.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/blog.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +59,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/templates" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../JavaCode/helloworld" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -78,7 +80,7 @@
       <recent name="com.example.backend.entity" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.BackendApplication">
+  <component name="RunManager" selected="Application.MarkdownUtils">
     <configuration name="MD5Utils" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.backend.util.MD5Utils" />
       <module name="backend" />
@@ -92,15 +94,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration name="MarkdownUtils" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.backend.util.MarkdownUtils" />
+      <module name="backend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.backend.util.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -130,6 +143,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MarkdownUtils" />
         <item itemvalue="Application.MD5Utils" />
         <item itemvalue="JUnit.BackendApplicationTests.contextLoads" />
       </list>
@@ -148,7 +162,8 @@
       <workItem from="1636182106021" duration="38144000" />
       <workItem from="1636274571423" duration="38888000" />
       <workItem from="1636526905778" duration="33291000" />
-      <workItem from="1636771706185" duration="11007000" />
+      <workItem from="1636771706185" duration="12973000" />
+      <workItem from="1636875351878" duration="5547000" />
     </task>
     <servers />
   </component>
@@ -168,15 +183,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/backend/controller/admin/TypesController.java</url>
-          <line>51</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="com.example.backend.entity.Type" memberName="name" />

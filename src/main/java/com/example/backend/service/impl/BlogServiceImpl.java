@@ -4,6 +4,7 @@ import com.example.backend.dao.BlogRepository;
 import com.example.backend.entity.Blog;
 import com.example.backend.entity.Type;
 import com.example.backend.service.BlogService;
+import com.example.backend.util.MarkdownUtils;
 import com.example.backend.util.MyBeanUtils;
 import com.example.backend.vo.BlogQuery;
 import org.springframework.beans.BeanUtils;
@@ -30,6 +31,15 @@ public class BlogServiceImpl implements BlogService {
     @Override
     public Blog getBlog(Long id) {
         return blogRepository.getById(id);
+    }
+
+    @Override
+    public Blog getAndConvert(Long id) {
+        Blog blog = blogRepository.getById(id);
+        Blog b = new Blog();
+        BeanUtils.copyProperties(blog,b);
+        b.setContent(MarkdownUtils.markdownToHtmlExtensions(blog.getContent()));
+        return null;
     }
 
     @Override

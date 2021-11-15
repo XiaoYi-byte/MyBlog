@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>博客发布</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
-    <link rel="stylesheet" href="../../static/lib/editormd/css/editormd.min.css" th:href="@{/lib/editormd/css/editormd.min.css}">
+    <link rel="stylesheet" href="../../static/lib/editormd/css/editormd.min.css"
+          th:href="@{/lib/editormd/css/editormd.min.css}">
     <link rel="stylesheet" href="../../static/css/custom.css">
 </head>
 
@@ -50,7 +51,8 @@
 <!-- content -->
 <div class="c-container c-padded-tb-big">
     <div class="ui container">
-        <form id="blog-form" action="#" method="post" class="ui form" th:object="${blog}" th:action="*{id} == null ? @{/admin/blogs} : @{/admin/blogs/{id}/edit(id=*{id})}">
+        <form id="blog-form" action="#" method="post" class="ui form" th:object="${blog}"
+              th:action="*{id} == null ? @{/admin/blogs} : @{/admin/blogs/{id}/edit(id=*{id})}">
             <input type="hidden" name="Published">
             <!-- header -->
             <div class="required field">
@@ -72,7 +74,8 @@
             <!-- blog content -->
             <div class="required field">
                 <div id="content-editormd" style="z-index: 1 !important;">
-                    <textarea name="content" placeholder="博客内容" style="display: none !important;" >[[*{content}]]</textarea>
+                    <textarea name="content" placeholder="博客内容"
+                              style="display: none !important;">[[*{content}]]</textarea>
                 </div>
             </div>
 
@@ -97,7 +100,7 @@
                     <div class="ui left labeled action input">
                         <label class="ui selection compact teal basic label">标签</label>
                         <div class="ui fluid selection multiple search dropdown">
-<!--                            value值的形式类似1,2,3-->
+                            <!--                            value值的形式类似1,2,3-->
                             <input name="tagIds" type="hidden" th:value="*{tagIds}">
                             <i class="dropdown icon"></i>
                             <div class="default text">标签</div>
@@ -134,19 +137,22 @@
                 </div>
                 <div class="field">
                     <div class="ui checkbox">
-                        <input type="checkbox" id="shareStatement" name="shareStatement" class="hidden" th:checked="*{shareStatement}">
+                        <input type="checkbox" id="shareStatement" name="shareStatement" class="hidden"
+                               th:checked="*{shareStatement}">
                         <label for="shareStatement">转载声明</label>
                     </div>
                 </div>
                 <div class="field">
                     <div class="ui checkbox">
-                        <input type="checkbox" id="canAppreciate" name="canAppreciate" class="hidden" th:checked="*{canAppreciate}">
+                        <input type="checkbox" id="canAppreciate" name="canAppreciate" class="hidden"
+                               th:checked="*{canAppreciate}">
                         <label for="canAppreciate">赞赏</label>
                     </div>
                 </div>
                 <div class="field">
                     <div class="ui checkbox">
-                        <input type="checkbox" id="canComment" name="canComment" class="hidden" th:checked="*{canComment}">
+                        <input type="checkbox" id="canComment" name="canComment" class="hidden"
+                               th:checked="*{canComment}">
                         <label for="canComment">评论</label>
                     </div>
                 </div>
@@ -230,12 +236,12 @@
         on: 'hover'
     });
 
-    $('#save-btn').click(function (){
+    $('#save-btn').click(function () {
         $('[name="Published"]').val(false)
         $('#blog-form').submit()
     })
 
-    $('#commit-btn').click(function (){
+    $('#commit-btn').click(function () {
         $('[name="Published"]').val(true)
         $('#blog-form').submit()
     })

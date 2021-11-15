@@ -44,30 +44,37 @@
         <div class="ui segment attached top">
             <div class="ui horizontal link list">
                 <div class="item">
-                    <img src="https://unsplash.it/100/100?image=1005" alt="" class="ui avatar image">
+                    <img src="https://unsplash.it/100/100?image=1005" alt="" class="ui avatar image"
+                         th:src="@{${blog.user.avatar}}">
                     <div class="content">
-                        <a href="#" class="header">XiaoYi-byte</a>
+                        <a href="#" class="header" th:text="${blog.user.nickname}">XiaoYi-byte</a>
                     </div>
                 </div>
                 <div class="item">
-                    <i class="calendar icon"></i> 2021-11-01
+                    <i class="calendar icon"></i> <span th:text="${#dates.format(blog.updateTime,'yyyy-MM-dd')}">2021-11-01</span>
                 </div>
                 <div class="item">
-                    <i class="eye icon"></i> 1234
+                    <i class="eye icon"></i> <span th:text="${blog.views}">1234</span>
                 </div>
             </div>
         </div>
         <div class="ui segment attached">
             <!-- photo -->
-            <img src="https://unsplash.it/800/450?image=1005" alt="" class="ui fluid rounded image">
+            <img src="https://unsplash.it/800/450?image=1005" alt="" class="ui fluid rounded image"
+                 th:src="@{${blog.firstPicture}}">
         </div>
         <div class="ui segment attached padded">
             <!-- blog -->
             <div class="ui right aligned basic segment">
-                <div class="ui orange basic label">原创</div>
+                <div class="ui orange basic label" th:text="${blog.flag}">原创</div>
             </div>
+
+            <!--title-->
+            <h2 class="ui center aligned header" th:text="${blog.title}">title</h2>
+
             <!-- content -->
-            <div class="typo typo-selection js-toc-content c-padded-lr-responsive c-padded-tb-large">
+            <div class="typo typo-selection js-toc-content c-padded-lr-responsive c-padded-tb-large"
+                 th:utext="${blog.content}">
                 <h1>中文网页重设与排版：<i class="serif">Typo.css</i></h1><br/>
                 <pre>
 							<code class="language-java">
@@ -243,23 +250,26 @@ public class Shape {
 
             <!-- label -->
             <div class="c-padded-lr-responsive">
-                <div class="ui basic teal left pointing label">方法论</div>
+                <div class="ui basic teal left pointing label" th:each="tag : ${blog.tags}" th:text="${tag.name}">方法论
+                </div>
             </div>
 
             <!-- reward -->
-            <div class="ui segment basic center aligned">
+            <div class="ui segment basic center aligned" th:if="${blog.canAppreciate}">
                 <div id="payButton" class="ui button basic circular orange">赞赏</div>
             </div>
             <div class="ui pay flowing popup transition hidden">
                 <div class="ui orange basic label">
                     <div class="ui images" style="font-size: inherit !important;">
                         <div class="image">
-                            <img src="./static/images/wechat.jpg" th:src="@{/images/wechat.jpg}" alt="" class="ui rounded bordered image"
+                            <img src="./static/images/wechat.jpg" th:src="@{/images/wechat.jpg}" alt=""
+                                 class="ui rounded bordered image"
                                  style="width: 120px;">
                             <div>支付宝</div>
                         </div>
                         <div class="image">
-                            <img src="./static/images/wechat.jpg" th:src="@{/images/wechat.jpg}" alt="" class="ui rounded bordered image"
+                            <img src="./static/images/wechat.jpg" th:src="@{/images/wechat.jpg}" alt=""
+                                 class="ui rounded bordered image"
                                  style="width: 120px;">
                             <div>微信</div>
                         </div>
@@ -273,19 +283,20 @@ public class Shape {
             <div class="ui grid">
                 <div class="eleven wide column">
                     <ui class="list">
-                        <li>作者：XiaoYi-byte</li>
-                        <li>发布时间：2021-11-01 08:14</li>
+                        <li>作者：<span th:text="${blog.user.nickname}">XiaoYi-byte</span><a href="#" th:href="@{/about}" target="_blank">（联系作者）</a></li>
+                        <li>发布时间：<span th:text="${#dates.format(blog.updateTime,'yyyy-MM-dd HH-mm')}">...</span></li>
                         <li>版权声明：自由转载-非商用-非衍生-保持署名（创意共享3.0许可证）</li>
                         <li>欢迎添加作者微信交朋友</li>
                     </ui>
                 </div>
                 <div class="five wide column">
-                    <img src="./static/images/wechat.jpg" th:src="@{/images/wechat.jpg}"  alt="" class="ui right floated rounded bordered image"
+                    <img src="./static/images/wechat.jpg" th:src="@{/images/wechat.jpg}" alt=""
+                         class="ui right floated rounded bordered image"
                          style="width: 110px;">
                 </div>
             </div>
         </div>
-        <div id="comment-container" class="ui segment attached bottom">
+        <div id="comment-container" class="ui segment attached bottom" th:if="${blog.canComment}">
             <!-- message -->
             <div class="ui teal segment">
                 <div class="ui comments">

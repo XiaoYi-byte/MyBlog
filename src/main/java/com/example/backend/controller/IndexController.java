@@ -1,5 +1,6 @@
 package com.example.backend.controller;
 
+import com.example.backend.entity.Blog;
 import com.example.backend.service.BlogService;
 import com.example.backend.service.TagsService;
 import com.example.backend.service.TypesService;
@@ -39,7 +40,10 @@ public class IndexController {
     }
 
     @GetMapping("/blog/{id}")
-    public String blog(@PathVariable String id) {
+    public String blog(@PathVariable Long id, Model model) {
+        Blog blog = blogService.getAndConvert(id);
+        model.addAttribute("blog",blog);
+        model.addAttribute("tags",tagsService.listTag(blog.getTagIds()));
         return "blog";
     }
 

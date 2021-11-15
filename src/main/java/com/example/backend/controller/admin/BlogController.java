@@ -44,7 +44,7 @@ public class BlogController {
     public String blogs(@PageableDefault(sort = {"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable, BlogQuery blog, Model model) {
         model.addAttribute("types", typesService.listType());
         model.addAttribute("page", blogService.listBlog(pageable, blog));
-        BeanUtils.copyProperties(blog,blogQuery);
+        BeanUtils.copyProperties(blog, blogQuery);
         return "admin/blogs";
     }
 
@@ -58,53 +58,55 @@ public class BlogController {
     @PostMapping("/blogs/search")
     public String search(@PageableDefault(sort = {"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable, BlogQuery blog, Model model) {
         model.addAttribute("page", blogService.listBlog(pageable, blog));
-        BeanUtils.copyProperties(blog,blogQuery);
+        BeanUtils.copyProperties(blog, blogQuery);
         return "admin/blogs :: blogList";
     }
 
     @GetMapping("/blogs/addBlog")
     public String addBlog(Model model) {
         model.addAttribute("blog", new Blog());
-        model.addAttribute("tags",tagsService.listTag());
+        model.addAttribute("tags", tagsService.listTag());
         model.addAttribute("types", typesService.listType());
         return "admin/blog-post";
     }
 
     @PostMapping("/blogs")
-    public String submit(@Valid Blog blog, RedirectAttributes attributes, HttpSession session){
+    public String submit(@Valid Blog blog, RedirectAttributes attributes, HttpSession session) {
         blog.setUser((User) session.getAttribute("user"));
         blog.setType(typesService.getType(blog.getType().getId()));
         blog.setTags(tagsService.listTag(blog.getTagIds()));
+        if ("".equals(blog.getFlag()))
+            blog.setFlag("原创");
         Blog b = blogService.saveBlog(blog);
-        if(b != null){
-            attributes.addFlashAttribute("message","发布成功");
+        if (b != null) {
+            attributes.addFlashAttribute("message", "发布成功");
         } else {
-            attributes.addFlashAttribute("message","发布失败");
+            attributes.addFlashAttribute("message", "发布失败");
         }
         return "redirect:/admin/blogs";
     }
 
     @PostMapping("/blogs/{id}/edit")
-    public String submitEditing(@PathVariable Long id, @Valid Blog blog, RedirectAttributes attributes, HttpSession session){
+    public String submitEditing(@PathVariable Long id, @Valid Blog blog, RedirectAttributes attributes, HttpSession session) {
         blog.setUser((User) session.getAttribute("user"));
         blog.setType(typesService.getType(blog.getType().getId()));
         blog.setTags(tagsService.listTag());
         Blog b = blogService.updateBlog(id, blog);
-        if(b != null){
-            attributes.addFlashAttribute("message","编辑成功");
+        if (b != null) {
+            attributes.addFlashAttribute("message", "编辑成功");
         } else {
-            attributes.addFlashAttribute("message","编辑失败");
+            attributes.addFlashAttribute("message", "编辑失败");
         }
         return "redirect:/admin/blogs";
     }
 
     @GetMapping("/blogs/{id}/edit")
-    public String editBlog(@PathVariable Long id, Model model){
+    public String editBlog(@PathVariable Long id, Model model) {
         List<Tag> tags = tagsService.listTag();
         Blog blog = blogService.getBlog(id);
         blog.init();
-        model.addAttribute("blog",blog);
-        model.addAttribute("tags",tags);
+        model.addAttribute("blog", blog);
+        model.addAttribute("tags", tags);
         model.addAttribute("types", typesService.listType());
         return "admin/blog-post";
     }
